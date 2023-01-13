@@ -1,0 +1,15 @@
+.Image {
+  width: 90%;
+  height: 450px;
+  margin: 2%;
+}
+.ImageGallery {
+  display: flex;
+}
+.LikeButton {
+  border-style: none;
+  background-color: white;
+}
+.imgCard {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
