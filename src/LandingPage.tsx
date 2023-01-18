@@ -6,7 +6,7 @@ import { CircularProgress } from '@mui/material'
 export const LandingPage = () => {
   const [isClicked, setIsCliked] = useState<any>(false)
   const [IsCommentClick, setIsCommentClick] = useState<any>(false)
-  const [comment, setComment] = useState("")
+  const [comment, setComment] = useState('')
   const dispatch: any = useDispatch()
   const data = useSelector((state: any) => state.DataSlice)
   useEffect(() => {
@@ -34,31 +34,18 @@ export const LandingPage = () => {
   // Comment functionality
   let commentBox;
   const CommentHandler = (val: React.MouseEvent<HTMLButtonElement>) => {
-    let commentBox=prompt("Write your comment here..")
+    commentBox = prompt("Write your comment here..")
     for (let i = 0; i < getData.length; i++) {
-      if (!IsCommentClick && val === getData[i].data.id) {
+      if (val === getData[i].data.id) {
         getData[i].comment = "block";
+        getData[i].commentData = commentBox
         localStorage.setItem("Data", JSON.stringify(getData))
         setIsCommentClick(true)
       }
-      if (IsCommentClick && val === getData[i].data.id) {
-        setIsCommentClick(false)
-        getData[i].comment = "none";
-        localStorage.setItem("Data", JSON.stringify(getData))
-      }
     }
-    if(commentBox){
+    if (commentBox) {
       setComment(commentBox)
     }
-  }
-  // Coment box 
-  const CommentInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(e.target.value)
-  }
-  // Comment button functionality
-  const CommentClickHandler = () => {
-    alert("You have commented on post ")
-    setComment(" ")
   }
   return (
     <div >
@@ -79,11 +66,7 @@ export const LandingPage = () => {
                 <i className='far fa-comment' style={{ fontSize: "36px" }}></i>
               </button>
               <b style={{ display: val.comment }}>
-                <input type="text" className="form-control" onChange={CommentInputHandler}
-                  placeholder="write comment"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1" />
-                <button className='btn btn-info' onClick={CommentClickHandler}>Comment</button>
+                {val.commentData}
               </b>
             </div>
           </div>

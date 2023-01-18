@@ -36,6 +36,7 @@ const dataSlice = createSlice({
         var obj = {
           liked1: true,
           comment: "none",
+          commentData:[],
           data: action.payload.photos[i],
         };
         state.arr.push(obj);
