@@ -32,7 +32,9 @@ export const LandingPage = () => {
     }
   }
   // Comment functionality
+  let commentBox;
   const CommentHandler = (val: React.MouseEvent<HTMLButtonElement>) => {
+    let commentBox=prompt("Write your comment here..")
     for (let i = 0; i < getData.length; i++) {
       if (!IsCommentClick && val === getData[i].data.id) {
         getData[i].comment = "block";
@@ -44,6 +46,9 @@ export const LandingPage = () => {
         getData[i].comment = "none";
         localStorage.setItem("Data", JSON.stringify(getData))
       }
+    }
+    if(commentBox){
+      setComment(commentBox)
     }
   }
   // Coment box 
